@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "AuraCharacterBase.generated.h"
 
+
+
 UCLASS(Abstract)
 class GAS_LEARNING_DEMO_API AAuraCharacterBase : public ACharacter
 {
@@ -23,5 +25,7 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<USkeletalMeshComponent> Weapon;
+
+	
 
 };

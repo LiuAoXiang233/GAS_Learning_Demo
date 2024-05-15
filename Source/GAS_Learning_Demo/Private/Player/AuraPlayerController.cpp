@@ -50,8 +50,14 @@ void AAuraPlayerController::SetupInputComponent()
 
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
+	// return Axis2D(Value.X, Value.Y)
 	const FVector2d InputAxisVector = InputActionValue.Get<FVector2d>();
+	/*
+	 * 获取控件旋转。这是完全对焦旋转，可能与相机方向不同（例如在第三人称视角中），
+	 * 并且可能与受控角色的旋转不同（例如，它可以选择不目视俯仰或滚动）。
+	 */
 	const FRotator Rotation = GetControlRotation();
+	
 	const FRotator YawRotation(0.f, Rotation.Yaw, 0.f);
 
 	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
