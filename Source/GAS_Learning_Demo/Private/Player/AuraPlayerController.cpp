@@ -4,6 +4,7 @@
 #include "Player/AuraPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Character/EnemyCharacter.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
@@ -18,6 +19,74 @@ AAuraPlayerController::AAuraPlayerController()
 	bReplicates = true;
 	
 }
+
+void AAuraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	CursorTrace();
+	
+}
+
+void AAuraPlayerController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+	if (!CursorHit.bBlockingHit) return;
+
+	LastActor = ThisActor;
+	ThisActor = Cast<AEnemyCharacter>(CursorHit.GetActor());
+	/**
+	 *	A. 两者都为NULL
+	 *		-也就是说明鼠标点在了墙壁上或者其他物体上
+	 *		-什么都不做
+	 *	B. LastActor == null && ThisActor == Enemy
+	 *		-让ThisActor高亮
+	 *	C. LastActor == Enemy && ThisActor == null
+	 *		-让LastActor不高亮
+	 *	D. both all == Enemy && lastActor == ThisActor
+	 *		-什么都不做
+	 *	E. both all == Enemy && lastActor != ThisActor
+	 *		-让lastActor 不高亮
+	 *		-让ThisActor 高亮
+	 */
+	if (LastActor == nullptr)
+	{
+		if (ThisActor != nullptr)
+		{
+			// case B:	LastActor == null && ThisActor == Enemy
+			ThisActor->HighLightActor();
+		}
+		else
+		{
+			// case A:	两者都为NULL
+			// Do nothing
+		}
+	}
+	else     // LastActor != nullptr
+	{
+		if(ThisActor == nullptr)
+		{
+			// case C
+			LastActor->UnHighLightActor();
+		}
+		else
+		{
+			if(LastActor == ThisActor)
+			{
+				// case D:
+				// Do nothing
+			}
+			else
+			{
+				// case E：
+				LastActor->UnHighLightActor();
+				ThisActor->HighLightActor();
+			}
+		}
+	}
+}
+
+
 
 void AAuraPlayerController::BeginPlay()
 {

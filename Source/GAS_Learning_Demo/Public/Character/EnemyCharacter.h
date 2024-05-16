@@ -15,6 +15,9 @@ class GAS_LEARNING_DEMO_API AEnemyCharacter : public AAuraCharacterBase, public 
 {
 	GENERATED_BODY()
 public:
+	AEnemyCharacter();
 	virtual void HighLightActor() override;
 	virtual void UnHighLightActor() override;
+public:
+	
 };
