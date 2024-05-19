@@ -18,6 +18,7 @@ public:
 	AEnemyCharacter();
 	virtual void HighLightActor() override;
 	virtual void UnHighLightActor() override;
-public:
+protected:
+	virtual void BeginPlay() override;
 	
 };

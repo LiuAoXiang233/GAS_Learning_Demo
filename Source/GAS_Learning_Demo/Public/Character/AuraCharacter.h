@@ -18,11 +18,14 @@ class GAS_LEARNING_DEMO_API AAuraCharacter : public AAuraCharacterBase
 	GENERATED_BODY()
 public:
 	AAuraCharacter();
-
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
 private:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<USpringArmComponent> SpringArm;
 
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UCameraComponent> Camera;
+
+	void InitAbilityActorInfo();
 };
