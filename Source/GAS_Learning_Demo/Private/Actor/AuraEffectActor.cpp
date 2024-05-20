@@ -13,6 +13,8 @@ AAuraEffectActor::AAuraEffectActor()
 {
  	
 	PrimaryActorTick.bCanEverTick = false;
+
+	// 添加静态网格体和盒体碰撞球
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
 	SetRootComponent(Mesh);
 
