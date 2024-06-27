@@ -21,7 +21,7 @@ public:
 	AAuraCharacterBase();
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	UAttributeSet* GetAttributeSet() const {return AttributeSet;}
+	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
 	// Called when the game starts or when spawned
@@ -36,4 +36,6 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
 
+
+	virtual void InitAbilityActorInfo();
 };

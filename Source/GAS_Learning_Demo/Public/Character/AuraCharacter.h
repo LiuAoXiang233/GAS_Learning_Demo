@@ -27,5 +27,5 @@ private:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UCameraComponent> Camera;
 
-	void InitAbilityActorInfo();
+	virtual  void InitAbilityActorInfo() override;
 };
