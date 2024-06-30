@@ -33,7 +33,21 @@ void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Resilience, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Viger, COND_None, REPNOTIFY_Always);
 
-	
+	/*
+	 *
+	 *	SecondaryAttribute
+	 * 
+	 */
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, PhysicalDamagePenetration, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, SpellDamagePenetration, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Armor, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, MagicResistance, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, SpellStrength, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, AttackPower, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, MaxHP, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, MaxMP, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Speed, COND_None, REPNOTIFY_Always);
+
 	
 	/*
 	 *
@@ -129,6 +143,54 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 	
 }
 
+
+void UAuraAttributeSet::OnRep_PhysicalDamagePenetration(
+	const FGameplayAttributeData& OldPhysicalDamagePenetration) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, PhysicalDamagePenetration, OldPhysicalDamagePenetration);
+}
+
+void UAuraAttributeSet::OnRep_SpellDamagePenetration(const FGameplayAttributeData& OldSpellDamagePenetration) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, SpellDamagePenetration, OldSpellDamagePenetration);
+}
+
+void UAuraAttributeSet::OnRep_Armor(const FGameplayAttributeData& OldArmor) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Armor, OldArmor);
+
+}
+
+void UAuraAttributeSet::OnRep_MagicResistance(const FGameplayAttributeData& OldMagicResistance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MagicResistance, OldMagicResistance);
+
+}
+
+void UAuraAttributeSet::OnRep_SpellStrength(const FGameplayAttributeData& OldSpellStrength) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, SpellStrength, OldSpellStrength);
+}
+
+void UAuraAttributeSet::OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, AttackPower, OldAttackPower);
+}
+
+void UAuraAttributeSet::OnRep_MaxHP(const FGameplayAttributeData& OldMaxHP) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxHP, OldMaxHP);
+}
+
+void UAuraAttributeSet::OnRep_MaxMP(const FGameplayAttributeData& OldMaxMP) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxMP, OldMaxMP);
+}
+
+void UAuraAttributeSet::OnRep_Speed(const FGameplayAttributeData& OldSpeed) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Speed, OldSpeed)
+}
 
 void UAuraAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
 {

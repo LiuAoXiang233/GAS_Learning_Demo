@@ -89,6 +89,96 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Viger, Category = "Primary Attributes")
 	FGameplayAttributeData Viger;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Viger);
+
+	UFUNCTION()
+	void OnRep_Strength(const FGameplayAttributeData& OldStrength) const;
+
+	UFUNCTION()
+	void OnRep_Intelligence(const FGameplayAttributeData& OldIntelligence) const;
+
+	UFUNCTION()
+	void OnRep_Resilience(const FGameplayAttributeData& OldResilence) const;
+
+	UFUNCTION()
+	void OnRep_Viger(const FGameplayAttributeData& OldViger) const;
+
+	/*
+	 *	Sceondary Attribute
+	 *		-Physical Damage Penetration	物理伤害穿透			该值取决于 Resilience 和 Strength
+	 *		-Spell Damage Penetration		法术伤害穿透			该值取决于 Resilience 和 Intelligence
+	 *		-Armor							护甲					该值取决于 Resilience 和 Strength
+	 *		-Magic Resistance				魔抗					该值取决于 Resilience 和 Intelligence
+	 *		-Spell Strength					法强					该值取决于 Intelligence
+	 *		-Attack Power					攻击力				该值取决于 Strength
+	 *		-Max HP							最大生命值			该值取决于 Viger 和 Resilience
+	 *		-Max MP							最大法力值			该值取决于 Intelligence 和 Resilience
+	 *		-Speed							移速					该值取决于 Viger 和 Resilience 和 Strength
+	 */
+
+	
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_PhysicalDamagePenetration, Category = "Secondary Attributes")
+	FGameplayAttributeData PhysicalDamagePenetration;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, PhysicalDamagePenetration);
+	
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_SpellDamagePenetration, Category = "Secondary Attributes")
+	FGameplayAttributeData SpellDamagePenetration;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, SpellDamagePenetration);
+	
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Armor, Category = "Secondary Attributes")
+	FGameplayAttributeData Armor;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Armor);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MagicResistance, Category = "Secondary Attributes")
+	FGameplayAttributeData MagicResistance;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MagicResistance);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_SpellStrength, Category = "Secondary Attributes")
+	FGameplayAttributeData SpellStrength;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, SpellStrength);
+	
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_AttackPower, Category = "Secondary Attributes")
+	FGameplayAttributeData AttackPower;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, AttackPower);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxHP, Category = "Secondary Attributes")
+	FGameplayAttributeData MaxHP;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MaxHP);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxMP, Category = "Secondary Attributes")
+	FGameplayAttributeData MaxMP;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MaxMP);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Speed, Category = "Secondary Attributes")
+	FGameplayAttributeData Speed;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Speed);
+
+	UFUNCTION()
+	void OnRep_PhysicalDamagePenetration(const FGameplayAttributeData& OldPhysicalDamagePenetration) const;
+
+	UFUNCTION()
+	void OnRep_SpellDamagePenetration(const FGameplayAttributeData& OldSpellDamagePenetration) const;
+
+	UFUNCTION()
+	void OnRep_Armor(const FGameplayAttributeData& OldArmor) const;
+
+	UFUNCTION()
+	void OnRep_MagicResistance(const FGameplayAttributeData& OldMagicResistance) const;
+
+	UFUNCTION()
+	void OnRep_SpellStrength(const FGameplayAttributeData& OldSpellStrength) const;
+
+	UFUNCTION()
+	void OnRep_AttackPower(const FGameplayAttributeData& OldAttackPower) const;
+
+	UFUNCTION()
+	void OnRep_MaxHP(const FGameplayAttributeData& OldMaxHP) const;
+
+	UFUNCTION()
+	void OnRep_MaxMP(const FGameplayAttributeData& OldMaxMP) const;
+
+	UFUNCTION()
+	void OnRep_Speed(const FGameplayAttributeData& OldSpeed) const;
+	
 	
 	/*
 	 *	Vital.Attribute
@@ -115,7 +205,6 @@ public:
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MaxMana);
 
 	
-
 	UFUNCTION()
 	void OnRep_Health(const FGameplayAttributeData& OldHealth) const;
 
@@ -128,17 +217,7 @@ public:
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
 
-	UFUNCTION()
-	void OnRep_Strength(const FGameplayAttributeData& OldStrength) const;
-
-	UFUNCTION()
-	void OnRep_Intelligence(const FGameplayAttributeData& OldIntelligence) const;
-
-	UFUNCTION()
-	void OnRep_Resilience(const FGameplayAttributeData& OldResilence) const;
-
-	UFUNCTION()
-	void OnRep_Viger(const FGameplayAttributeData& OldViger) const;
+	
 
 private:
 
