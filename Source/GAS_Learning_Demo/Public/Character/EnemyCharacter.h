@@ -16,11 +16,32 @@ class GAS_LEARNING_DEMO_API AEnemyCharacter : public AAuraCharacterBase, public 
 	GENERATED_BODY()
 public:
 	AEnemyCharacter();
+
+	/*
+	 *	EnemyInterface
+	 */
 	virtual void HighLightActor() override;
 	virtual void UnHighLightActor() override;
+	/*
+	 *	End EnemyInterface
+	 */
+
+
+	/*
+	 *	CombatInterface
+	 */
+	virtual int32 GetCharacterLevel() override;
+	/*
+	 *	End CombatInterface
+	 */
 protected:
 	virtual void BeginPlay() override;
 
 	virtual void InitAbilityActorInfo() override;
+
+private:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character Class Defaults", meta = (AllowPrivateAccess = "true"))
+	int32 Level = 1;
 	
 };

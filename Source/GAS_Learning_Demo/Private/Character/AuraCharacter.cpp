@@ -51,6 +51,13 @@ void AAuraCharacter::OnRep_PlayerState()
 	InitAbilityActorInfo();
 }
 
+int32 AAuraCharacter::GetCharacterLevel()
+{
+	AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>();
+	check(AuraPlayerState);
+	return AuraPlayerState->GetPlayerLevel();
+}
+
 void AAuraCharacter::InitAbilityActorInfo()
 {
 	AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>();
@@ -61,9 +68,6 @@ void AAuraCharacter::InitAbilityActorInfo()
 	
 	AttributeSet = AuraPlayerState->GetAttributeSet();
 
-	
-	
-
 	// 在多人游戏中，该AuraPlayerController可以为null
 	if(AAuraPlayerController* AuraPlayerController = Cast<AAuraPlayerController> (GetController()))
 	{
@@ -73,5 +77,5 @@ void AAuraCharacter::InitAbilityActorInfo()
 		}
 	}
 	
-	InitializePrimaryAttributes();
+	InitializeDefaultAttributes();
 }

@@ -104,15 +104,15 @@ public:
 
 	/*
 	 *	Sceondary Attribute
-	 *		-Physical Damage Penetration	物理伤害穿透			该值取决于 Resilience 和 Strength
-	 *		-Spell Damage Penetration		法术伤害穿透			该值取决于 Resilience 和 Intelligence
-	 *		-Armor							护甲					该值取决于 Resilience 和 Strength
-	 *		-Magic Resistance				魔抗					该值取决于 Resilience 和 Intelligence
-	 *		-Spell Strength					法强					该值取决于 Intelligence
-	 *		-Attack Power					攻击力				该值取决于 Strength
-	 *		-Max HP							最大生命值			该值取决于 Viger 和 Resilience
-	 *		-Max MP							最大法力值			该值取决于 Intelligence 和 Resilience
-	 *		-Speed							移速					该值取决于 Viger 和 Resilience 和 Strength
+	 *		-Physical Damage Penetration	物理伤害穿透			该值取决于 Resilience 和 Strength				适应力 * 1.2 + 力量 * 1.1 + 7
+	 *		-Spell Damage Penetration		法术伤害穿透			该值取决于 Resilience 和 Intelligence			适应力 * 1 + 智力 * 3.2 + 3
+	 *		-Armor							护甲					该值取决于 Resilience 和 Strength				适应力 * 4 + 力量 * 2.1 + 11
+	 *		-Magic Resistance				魔抗					该值取决于 Resilience 和 Intelligence			适应力 * 3.5 + 智力 * 4.2 + 2
+	 *		-Spell Strength					法强					该值取决于 Intelligence 和 Viger				{5 * （智力 + 1） + 2 } + 生命力 * 2.3 
+	 *		-Attack Power					攻击力				该值取决于 Strength	和 Viger				{1.3 * （力量 + 5） + 7} + 生命力 * 0.7
+	 *		-Max HP							最大生命值			该值取决于 Viger 和 Resilience				{（生命力 + 2） * 12 + 7} + 适应力 * 3 
+	 *		-Max MP							最大法力值			该值取决于 Intelligence 和 Resilience			{（智力 + 1） * 5 + 3} + 适应力 * 1.5  
+	 *		-Speed							移速					该值取决于 Viger 和 Resilience 和 Strength	生命力 * 20 + 适应力 * 30.5 + 力量 * 10 
 	 */
 
 	
@@ -183,39 +183,29 @@ public:
 	/*
 	 *	Vital.Attribute
 	 *		-HP
-	 *		-最大HP
+	 *	
 	 *		-MP
-	 *		-最大MP
+	 *	
 	 */
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category = "Vital Attributes")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Health);
-
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxHealth, Category = "Vital Attributes")
-	FGameplayAttributeData MaxHealth;
-	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MaxHealth);
+	
 	
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Mana, Category = "Vital Attributes")
 	FGameplayAttributeData Mana;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Mana);
-
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxMana, Category = "Vital Attributes")
-	FGameplayAttributeData MaxMana;
-	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MaxMana);
+	
 
 	
 	UFUNCTION()
 	void OnRep_Health(const FGameplayAttributeData& OldHealth) const;
-
-	UFUNCTION()
-	void OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth) const;
+	
 
 	UFUNCTION()
 	void OnRep_Mana(const FGameplayAttributeData& OldMana) const;
 
-	UFUNCTION()
-	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
 
 	
 

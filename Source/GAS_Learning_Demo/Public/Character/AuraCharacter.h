@@ -20,6 +20,14 @@ public:
 	AAuraCharacter();
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
+
+	/*
+	 *	CombatInterface
+	 */
+	virtual int32 GetCharacterLevel() override;
+	/*
+	 *	End CombatInterface
+	 */
 private:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<USpringArmComponent> SpringArm;
