@@ -33,6 +33,9 @@ float UMMC_MaxMP::CalculateBaseMagnitude_Implementation(const FGameplayEffectSpe
 
 	float Intelligence = 0.f;
 	float Resilience = 0.f;
+
+	Intelligence = FMath::Max<float>(Intelligence, 0.f);
+	Resilience = FMath::Max<float>(Resilience, 0.f);
 	
 	GetCapturedAttributeMagnitude(IntelligenceDef, Spec, EvaluateParameters, Intelligence);
 	GetCapturedAttributeMagnitude(IntelligenceDef, Spec, EvaluateParameters, Resilience);

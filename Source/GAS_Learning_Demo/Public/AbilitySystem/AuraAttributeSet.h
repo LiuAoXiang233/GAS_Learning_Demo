@@ -182,9 +182,9 @@ public:
 	
 	/*
 	 *	Vital.Attribute
-	 *		-HP
+	 *		-HP		跟 Viger 有关
 	 *	
-	 *		-MP
+	 *		-MP		跟 Intelligence 有关
 	 *	
 	 */
 
