@@ -5,8 +5,6 @@
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
 #include "AbilitySystemComponent.h"
-
-#include "GeometryCollection/Facades/CollectionUVFacade.h"
 #include "AuraAttributeSet.generated.h"
 
 // Uses macros from AttributeSet.h
@@ -50,6 +48,10 @@ struct FEffectProperties
 	ACharacter* TargetCharacter = nullptr;
 };
 
+
+template<class T>
+using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
+
 /**
  * 
  */
@@ -65,6 +67,9 @@ public:
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
 
+	//  FGameplayAttribute(*)()		 =====		TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr
+	TMap<FGameplayTag, TStaticFuncPtr<FGameplayAttribute()>> TagsToAttributes;
+	
 	/*
 	 *	Primary.Attribute
 	 *		-Strength		力量

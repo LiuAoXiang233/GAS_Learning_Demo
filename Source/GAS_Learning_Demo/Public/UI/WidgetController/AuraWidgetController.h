@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
-#include "UObject/NoExportTypes.h"
 #include "AuraWidgetController.generated.h"
 
 class UAttributeSet;
@@ -20,10 +19,11 @@ struct FWidgetControllerParams
 	: PlayerState(PS), PlayerController(PC), AbilitySystemComponent(ASC), AttributeSet(AS){}
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<APlayerController> PlayerController = nullptr;
+    	TObjectPtr<APlayerState> PlayerState = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<APlayerState> PlayerState = nullptr;
+	TObjectPtr<APlayerController> PlayerController = nullptr;
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
@@ -44,6 +44,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void BroadcastInitalValues();
 	virtual void BindCallBackToDependencies();
+
+	
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "WidgetController")
 	TObjectPtr<APlayerController> PlayerController;

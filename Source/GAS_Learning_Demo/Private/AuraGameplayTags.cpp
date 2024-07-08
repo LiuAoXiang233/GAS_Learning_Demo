@@ -72,4 +72,41 @@ void FAuraGameplayTags::InitialNativeGameplayTags()
 	GameplayTags.Attribute_Secondary_Speed = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Attribute.Secondary.Speed"),
 		FString("速度，移动速度。"));
+
+	/*
+	 *
+	 *	Input Tags
+	 * 
+	 */
+
+	GameplayTags.InputTag_LMB = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.LMB"),
+		FString("左键")
+	);
+	
+	GameplayTags.InputTag_RMB = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.RMB"),
+		FString("右键")
+	);
+
+	GameplayTags.InputTag_1 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.1"),
+		FString("1键")
+	);
+
+	GameplayTags.InputTag_2 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.2"),
+		FString("2键")
+	);
+
+	GameplayTags.InputTag_3 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.3"),
+		FString("3键")
+	);
+
+	GameplayTags.InputTag_4 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.4"),
+		FString("4键")
+	);
+	
 }

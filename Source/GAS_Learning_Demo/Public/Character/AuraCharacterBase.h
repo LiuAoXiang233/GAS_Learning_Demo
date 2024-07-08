@@ -9,6 +9,8 @@
 #include "AuraCharacterBase.generated.h"
 
 
+class UGameplayAbility;
+class UAuraGameplayAbilities;
 class UGameplayEffect;
 class UAttributeSet;
 class UAbilitySystemComponent;
@@ -24,6 +26,11 @@ public:
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
+
+	void GiveChararcterAbilities();
+
+	UPROPERTY(EditAnywhere)
+	TArray<TSubclassOf<UGameplayAbility>> DefaultAbilities;
 
 protected:
 	// Called when the game starts or when spawned

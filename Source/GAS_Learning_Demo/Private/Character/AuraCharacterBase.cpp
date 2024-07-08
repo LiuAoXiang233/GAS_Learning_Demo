@@ -5,6 +5,7 @@
 
 #include "NavigationSystemTypes.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "AbilitySystem/Abilities/AuraGameplayAbilities.h"
 
 
 // Sets default values
@@ -25,6 +26,13 @@ UAbilitySystemComponent* AAuraCharacterBase::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
+
+void AAuraCharacterBase::GiveChararcterAbilities()
+{
+	UAuraAbilitySystemComponent* ASC = Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent);
+	ASC->AddCharacterAbilities(DefaultAbilities);
+}
+
 
 // Called when the game starts or when spawned
 void AAuraCharacterBase::BeginPlay()
@@ -52,7 +60,6 @@ void AAuraCharacterBase::InitializeDefaultAttributes() const
 	ApplyEffectToSelf(DefaultPrimaryAttribute, 1.f);
 	ApplyEffectToSelf(DefaultSecondaryAttribute, 1.f);
 	ApplyEffectToSelf(DefaultVitalAttribute, 1.f);
-	GEngine->AddOnScreenDebugMessage(-1, 5.f,  FColor::Blue, TEXT("已初始化属性！"));
 
 }
 

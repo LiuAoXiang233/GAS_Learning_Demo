@@ -4,14 +4,41 @@
 #include "AbilitySystem/AuraAttributeSet.h"
 
 #include "AbilitySystemBlueprintLibrary.h"
+#include "AuraGameplayTags.h"
 #include "GameplayEffectExtension.h"
 #include "GameFramework/Character.h"
 #include "Net/UnrealNetwork.h"
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
-	InitHealth(50.f);
-	InitMana(300.f);
+	const FAuraGameplayTags GameplayTags = FAuraGameplayTags::Get();
+
+	/*
+	 *	Primary Attributes
+	 * 
+	 */
+	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Strength, GetStrengthAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Intelligence, GetIntelligenceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Resilience, GetResilienceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Viger, GetVigerAttribute);
+	
+
+	/*
+	 *	Secondary Attributes
+	 * 
+	 */
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_Armor, GetArmorAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_Speed, GetSpeedAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_AttackPower, GetAttackPowerAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_MagicResistance, GetMagicResistanceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_SpellStrength, GetSpellStrengthAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_MaxHP, GetMaxHPAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_MaxMP, GetMaxMPAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_PhysicalDamagePenetration, GetPhysicalDamagePenetrationAttribute);
+	TagsToAttributes.Add(GameplayTags.Attribute_Secondary_SpellDamagePenetration, GetSpellDamagePenetrationAttribute);
+
+	
+
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

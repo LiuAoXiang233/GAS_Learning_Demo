@@ -19,7 +19,8 @@ class GAS_LEARNING_DEMO_API UAuraAbilitySystemComponent : public UAbilitySystemC
 
 public:
 	void AbilityActorInfoSet();
-
+	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& Abilities);
+	
 	FEffectAssetTags EffectAssetTags;
 
 protected:
